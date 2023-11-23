@@ -26,14 +26,19 @@ void handleRequest(char* requestBuffer,
 
 void route(HttpRequest* request, HttpResponse* response, Header* headerMap) {
 
-    if (strcmp(request->path, "/lol") == 0) {
+    if (is(request->path, "/lol")) {
         setHeader(headerMap, 0, "", "");
         fillResponse(response, "HTTP/1.1", "200", "OK", headerMap, 1, "<h1>you are in lol section now now</h1>");
-    } else if (strcmp(request->path, "/toJeDobry") == 0) { 
+    } else if (is(request->path, "/toJeDobry")) { 
         setHeader(headerMap, 0, "", "");
         fillResponse(response, "HTTP/1.1", "200", "OK", headerMap, 1, "<h1>Jo jo, je to dobrý</h1>");
     } else {
         setHeader(headerMap, 0, "", "");
         fillResponse(response, "HTTP/1.1", "200", "OK", headerMap, 1, "<h1>this is HOME</h1>");
     }
+}
+
+
+bool is(char* first, char* second) {
+    return strcmp(first, second) == 0;
 }

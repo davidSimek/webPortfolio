@@ -3,6 +3,8 @@
 
 #include "../lib/httpLibrary/src/httpLibrary.h"
 
+#include <stdbool.h>
+
 void handleRequest(char* requestBuffer,
                    HttpRequest* request,
                    char* responseBuffer,
@@ -13,5 +15,7 @@ void handleRequest(char* requestBuffer,
                    Header* headerMap);
 
 void route(HttpRequest* request, HttpResponse* response, Header* headerMap);
+
+bool is(char* first, char* second);
 
 #endif
